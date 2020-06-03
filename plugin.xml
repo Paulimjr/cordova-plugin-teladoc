@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-teladoc" version="1.0.0">
+    
+    <!-- Change this to your plugin name -->
+    <name>Teladoc</name>
+
+    <!-- Change this to describe your plugin -->
+    <description>Cordova plugin for Teladoc Medical Videoconferencing</description>
+    <license>MIT</license>
+
+    <!-- Add any other keywords you find necessary for your plugin -->
+    <keywords>cordova,android,ios</keywords>
+    
+    <engines>
+        <engine name="cordova" version=">=7.1.0"/>
+        <engine name="cordova-android" version=">=8.1.0"/>
+        <engine name="cordova-ios" version=">=5.1.1"/>
+    </engines>
+
+    <preference name="TELADOC_API_KEY"/>
+    <preference name="TELADOC_SERVER"/>
+    <preference name="TELADOC_ISPRODUCTION"/>
+
+    <!-- Change myplugin.js to the name of your plugin's main js file -->
+    <js-module src="www/teladocPlugin.js" name="Teladoc">
+        <!-- Change myPlugin to the name you want your plugin to be referenced from -->
+        <clobbers target="cordova.plugins.Teladoc" />
+    </js-module>
+
+    <!-- Android -->
+    <platform name="android">
+
+        <config-file target="res/values/strings.xml" parent="/*">
+            <string name="TELADOC_API_KEY">$TELADOC_API_KEY</string>
+            <string name="TELADOC_SERVER">$TELADOC_SERVER</string>
+            <string name="TELADOC_ISPRODUCTION">$TELADOC_ISPRODUCTION</string>
+        </config-file>
+
+        <!-- Android HOOK to change the gradle custom  -->
+        <hook type="before_plugin_install" src="hooks/android_change_gradle.js"/>
+    
+        <config-file target="res/xml/config.xml" parent="/*">
+            <!-- Change this to your plugin name -->
+            <feature name="TeladocPlugin">
+                <!-- Change this to reflect the name of the package in your android source files -->
+                <param name="android-package" value="com.fidelidade.teladoc.TeladocPlugin"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/source/TeladocPlugin.java" target-dir="src/com/fidelidade/teladoc" />
+        <source-file src="src/android/source/Utils.java" target-dir="src/com/fidelidade/teladoc" />
+
+        <framework src="src/android/lib/teladoc.gradle" custom="true" type="gradleReference" />
+        <resource-file src="src/android/lib/members-sdk-3.27.1.aar" target="libs/members-sdk-3.27.1.aar" />
+
+    </platform>
+
+    <platform name="ios">
+	
+		<preference name="CALENDARS_USAGE_DESCRIPTION"/>
+		<preference name="CAMERA_USAGE_DESCRIPTION"/>
+		<preference name="LOCATION_ALWAYS_AND_WHEN_IN_USE_DESCRIPTION"/>
+		<preference name="LOCATION_ALWAYS_USAGE_DESCRIPTION"/>
+		<preference name="LOCATION_WHEN_IN_USE_DESCRIPTION"/>
+		<preference name="MICROPHONE_USAGE_DESCRIPTION"/>
+		<preference name="PHOTO_LIBRARY_USAGE_DESCRIPTION"/>
+	
+        <hook type="before_plugin_install" src="hooks/ios_build_podspec_url.js"/>
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="TeladocPlugin">
+                <param name="ios-package" value="TeladocPlugin" />
+            </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="TELADOC_API_KEY">
+            <string>$TELADOC_API_KEY</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="TELADOC_SERVER">
+            <string>$TELADOC_SERVER</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="TELADOC_ISPRODUCTION">
+            <string>$TELADOC_ISPRODUCTION</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSAppTransportSecurity">
+            <dict>
+                <key>NSAllowsArbitraryLoads</key>
+                <true/>
+            </dict>
+        </config-file>
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+            <array>
+                <dict>
+                    <key>CFBundleTypeRole</key>
+                    <string>Editor</string>
+                    <key>CFBundleURLName</key>
+                    <string>com.cordova.plugins.Teladoc</string>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>teladocsdk</string>
+                    </array>
+                </dict>
+            </array>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSCalendarsUsageDescription">
+            <string>$CALENDARS_USAGE_DESCRIPTION</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+            <string>$CAMERA_USAGE_DESCRIPTION</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSLocationAlwaysAndWhenInUseUsageDescription">
+            <string>$LOCATION_ALWAYS_AND_WHEN_IN_USE_DESCRIPTION</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">
+            <string>$LOCATION_ALWAYS_USAGE_DESCRIPTION</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
+            <string>$LOCATION_WHEN_IN_USE_DESCRIPTION</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSMicrophoneUsageDescription">
+            <string>$MICROPHONE_USAGE_DESCRIPTION</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSPhotoLibraryUsageDescription">
+            <string>$PHOTO_LIBRARY_USAGE_DESCRIPTION</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="UIUserInterfaceStyle">
+            <string>Light</string>
+        </config-file>
+
+        <source-file src="src/ios/AppDelegate+Teladoc.m"/>
+        <header-file src="src/ios/AppDelegate+Teladoc.h"/>
+        <source-file src="src/ios/PluginCore.m"/>
+        <header-file src="src/ios/PluginCore.h"/>
+        <source-file src="src/ios/TeladocPlugin.m"/>
+        <source-file src="src/ios/RSA.m"/>
+        <header-file src="src/ios/RSA.h"/>
+        <source-file src="src/ios/UIColor+Utilities.m"/>
+        <header-file src="src/ios/UIColor+Utilities.h"/>
+
+        <podspec>
+            <config>
+                <source url="https://github.com/CocoaPods/Specs.git"/>
+            </config>
+            <pods use-frameworks="true">
+                <pod name="Teladoc" options=":podspec => 'https://mobile-api-dev1.teladoc.com/sdk/34bfc256f112c4e46950157cf0bed8e5e24cae3e/podspec/latest.podspec'" />
+            </pods>
+        </podspec>
+
+    </platform>
+</plugin>
