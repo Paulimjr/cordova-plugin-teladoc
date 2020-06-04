@@ -8,6 +8,10 @@ var exec = require("cordova/exec");
 function Teladoc() {
     
 }
+
+Teladoc.prototype.teladocLogin = function(successCallback, errorCallback, encryptedKey) {
+   exec(successCallback, errorCallback, 'TeladocPlugin', 'doTeladocLogin', [encryptedKey]);
+};
            
 Teladoc.prototype.teladocLoginWithToken = function(successCallback, errorCallback, encryptedKey) {
     exec(successCallback, errorCallback, 'TeladocPlugin', 'doTeladocLoginWithToken', [encryptedKey]);
