@@ -2,6 +2,7 @@ allprojects {
     repositories {
         jcenter()
         google()
+        maven { url "http://jcenter.bintray.com" }
         // todo for tests - branch develop
         maven { 
             url 'https://mobile-api-dev1.teladoc.com/sdk/b242e4a1964ebae753af8174e6e2eef1914546a3/maven'
