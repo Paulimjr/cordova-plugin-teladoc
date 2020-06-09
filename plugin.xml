@@ -39,7 +39,7 @@
         </config-file>
 
         <!-- Android HOOK to change the gradle custom  -->
-        <hook type="before_plugin_install" src="hooks/android_change_gradle.js"/>
+        <hook type="before_build" src="hooks/android_change_gradle.js"/>
     
         <config-file target="res/xml/config.xml" parent="/*">
             <!-- Change this to your plugin name -->
@@ -67,7 +67,7 @@
 		<preference name="MICROPHONE_USAGE_DESCRIPTION"/>
 		<preference name="PHOTO_LIBRARY_USAGE_DESCRIPTION"/>
 	
-        <hook type="before_plugin_install" src="hooks/ios_build_podspec_url.js"/>
+        <hook type="before_build" src="hooks/ios_build_podspec_url.js"/>
 
         <config-file target="config.xml" parent="/*">
             <feature name="TeladocPlugin">
