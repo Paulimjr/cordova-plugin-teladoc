@@ -39,12 +39,12 @@ Teladoc.prototype.changeColor = function (successCallback, errorCallback, colors
 };
 
 Teladoc.install = function() {
-   if !(cordova.plugins) {
-      cordova.plugins = {}
+   if !(window.plugins) {
+      window.plugins = {}
    }
 
-   cordova.plugins.Teladoc = new Teladoc();
-   return cordova.plugins.Teladoc;
+   window.plugins.Teladoc = new Teladoc();
+   return window.plugins.Teladoc;
 }
 
 cordova.addConstructor(Teladoc.install);
