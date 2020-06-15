@@ -26,7 +26,8 @@
     <!-- Change myplugin.js to the name of your plugin's main js file -->
     <js-module src="www/teladocPlugin.js" name="Teladoc">
         <!-- Change myPlugin to the name you want your plugin to be referenced from -->
-        <clobbers target="cordova.plugins.Teladoc" />
+        <clobbers target="cordova.plugins.teladoc" />
+        <clobbers target="plugin.teladoc" />
     </js-module>
 
     <!-- Android -->
