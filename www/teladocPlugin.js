@@ -6,10 +6,11 @@ var exec = require("cordova/exec");
  * Paulo Cesar & Pedro Remedios
  * @returns {Teladoc}
  */
-function Teladoc() {
+
+/**function Teladoc() {
     
 }
-
+**/
 exports.teladocLogin = function(successCallback, errorCallback, encryptedKey) {
    exec(successCallback, errorCallback, 'TeladocPlugin', 'doTeladocLogin', [encryptedKey]);
 };
