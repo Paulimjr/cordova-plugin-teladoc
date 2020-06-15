@@ -1,4 +1,4 @@
-//var exec = require("cordova/exec");
+var exec = require("cordova/exec");
 
 /**
  * Innovagency - Team Mobile
@@ -42,7 +42,7 @@ exports.teladocLogout = function(successCallback, errorCallback) {
    exec(successCallback, errorCallback, 'TeladocPlugin', 'doTeladocLogout', []);
 };
                
-Teladoc.prototype.getConsultations = function(successCallback, errorCallback) {
+exports.getConsultations = function(successCallback, errorCallback) {
   exec(successCallback, errorCallback, 'TeladocPlugin', 'getTeladocConsultations', []);
 };
                
