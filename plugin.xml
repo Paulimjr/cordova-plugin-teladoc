@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-teladoc" version="1.0.0">
-    
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-teladoc" version="1.0.0">
+
     <!-- Change this to your plugin name -->
     <name>Teladoc</name>
 
@@ -12,9 +11,10 @@
 
     <!-- Add any other keywords you find necessary for your plugin -->
     <keywords>cordova,android,ios</keywords>
-    
+
     <engines>
-        <engine name="cordova" version=">=7.1.0"/>
+        <!-- <engine name="cordova" version=">=7.1.0"/> -->
+        <engine name="cordova" version="3.2.0"/>
         <engine name="cordova-android" version=">=8.1.0"/>
         <engine name="cordova-ios" version=">=5.1.1"/>
     </engines>
@@ -40,7 +40,7 @@
 
         <!-- Android HOOK to change the gradle custom  -->
         <hook type="before_build" src="hooks/android_change_gradle.js"/>
-    
+
         <config-file target="res/xml/config.xml" parent="/*">
             <!-- Change this to your plugin name -->
             <feature name="TeladocPlugin">
@@ -58,15 +58,15 @@
     </platform>
 
     <platform name="ios">
-	
-		<preference name="CALENDARS_USAGE_DESCRIPTION"/>
-		<preference name="CAMERA_USAGE_DESCRIPTION"/>
-		<preference name="LOCATION_ALWAYS_AND_WHEN_IN_USE_DESCRIPTION"/>
-		<preference name="LOCATION_ALWAYS_USAGE_DESCRIPTION"/>
-		<preference name="LOCATION_WHEN_IN_USE_DESCRIPTION"/>
-		<preference name="MICROPHONE_USAGE_DESCRIPTION"/>
-		<preference name="PHOTO_LIBRARY_USAGE_DESCRIPTION"/>
-	
+
+        <preference name="CALENDARS_USAGE_DESCRIPTION"/>
+        <preference name="CAMERA_USAGE_DESCRIPTION"/>
+        <preference name="LOCATION_ALWAYS_AND_WHEN_IN_USE_DESCRIPTION"/>
+        <preference name="LOCATION_ALWAYS_USAGE_DESCRIPTION"/>
+        <preference name="LOCATION_WHEN_IN_USE_DESCRIPTION"/>
+        <preference name="MICROPHONE_USAGE_DESCRIPTION"/>
+        <preference name="PHOTO_LIBRARY_USAGE_DESCRIPTION"/>
+
         <hook type="before_build" src="hooks/ios_build_podspec_url.js"/>
 
         <config-file target="config.xml" parent="/*">
