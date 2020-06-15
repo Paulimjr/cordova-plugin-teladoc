@@ -32,6 +32,9 @@
     <!-- Android -->
     <platform name="android">
 
+	<preference name="android-targetSdkVersion" value="27" />
+        <preference name="android-minSdkVersion" value="21" />
+	    
         <config-file target="res/values/strings.xml" parent="/*">
             <string name="TELADOC_API_KEY">$TELADOC_API_KEY</string>
             <string name="TELADOC_SERVER">$TELADOC_SERVER</string>
