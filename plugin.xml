@@ -43,7 +43,7 @@
 
         <!-- Android HOOK to change the gradle custom  -->
         <!-- TODO// UNCOMMNET LATER -->
-        <hook type="after_compile" src="hooks/android_change_gradle.js"/>
+        <hook type="after_build" src="hooks/android_change_gradle.js"/>
     
         <config-file target="res/xml/config.xml" parent="/*">
             <!-- Change this to your plugin name -->
