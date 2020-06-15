@@ -148,7 +148,7 @@
     }];
 }
 
--(void)changeColors:(CDVInvokedUrlCommand *)command {
+-(void)changeColor:(CDVInvokedUrlCommand *)command {
     [self runAction:command withArgs:1 forBlock:^(CDVInvokedUrlCommand *command) {
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         

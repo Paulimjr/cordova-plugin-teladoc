@@ -1,69 +1,53 @@
 var exec = require("cordova/exec");
 
-/**
- * Constructor.
- *
- * @returns {Teladoc}
- */
-function Teladoc() {
-    
-}
-
-Teladoc.prototype.teladocLogin = function(successCallback, errorCallback, encryptedKey) {
-   exec(successCallback, errorCallback, 'TeladocPlugin', 'doTeladocLogin', [encryptedKey]);
-};
-           
-Teladoc.prototype.teladocLoginWithToken = function(successCallback, errorCallback, encryptedKey) {
-    exec(successCallback, errorCallback, 'TeladocPlugin', 'doTeladocLoginWithToken', [encryptedKey]);
+exports.teladocLoginWithToken = function (successCallback, errorCallback, encryptedKey) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "doTeladocLoginWithToken", [encryptedKey]);
 };
 
-Teladoc.prototype.teladocDashboard = function(successCallback, errorCallback) {
-    exec(successCallback, errorCallback, 'TeladocPlugin', 'showDashboard', []);
-};
-               
-Teladoc.prototype.teladocImageUpload = function(successCallback, errorCallback) {
-   exec(successCallback, errorCallback, 'TeladocPlugin', 'showImageUpload', []);
+exports.teladocDashboard = function (successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "showDashboard", []);
 };
 
-Teladoc.prototype.teladocConsultationList = function(successCallback, errorCallback) {
-   exec(successCallback, errorCallback, 'TeladocPlugin', 'showConsultations', []);
-};
-               
-Teladoc.prototype.teladocRequestConsultation = function(successCallback, errorCallback) {
-   exec(successCallback, errorCallback, 'TeladocPlugin', 'requestConsultation', []);
-};
-               
-Teladoc.prototype.teladocAccountSettings = function(successCallback, errorCallback) {
-   exec(successCallback, errorCallback, 'TeladocPlugin', 'showTeladocAccountSettings', []);
+exports.teladocImageUpload = function (successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "showImageUpload", []);
 };
 
-Teladoc.prototype.teladocLogout = function(successCallback, errorCallback) {
-   exec(successCallback, errorCallback, 'TeladocPlugin', 'doTeladocLogout', []);
-};
-               
-Teladoc.prototype.getConsultations = function(successCallback, errorCallback) {
-  exec(successCallback, errorCallback, 'TeladocPlugin', 'getTeladocConsultations', []);
-};
-               
-Teladoc.prototype.setPrimaryColor = function(successCallback, errorCallback, color) {
-   exec(successCallback, errorCallback, 'TeladocPlugin', 'setPrimaryColor', [color]);
+exports.teladocConsultationList = function (successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "showConsultations", []);
 };
 
-Teladoc.prototype.setSecondaryColor = function(successCallback, errorCallback, color) {
-   exec(successCallback, errorCallback, 'TeladocPlugin', 'setSecondaryColor', [color]);
+exports.teladocRequestConsultation = function (successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "requestConsultation", []);
 };
 
-Teladoc.prototype.setTertiaryColor = function(successCallback, errorCallback, color) {
-   exec(successCallback, errorCallback, 'TeladocPlugin', 'setTertiaryColor', [color]);
+exports.teladocAccountSettings = function (successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "showTeladocAccountSettings", []);
 };
 
-Teladoc.prototype.setStatusBarColor = function(successCallback, errorCallback, color) {
-   exec(successCallback, errorCallback, 'TeladocPlugin', 'setStatusBarColor', [color]);
+exports.teladocLogout = function (successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "doTeladocLogout", []);
 };
 
-Teladoc.prototype.changeColor = function(successCallback, errorCallback, colors) {
-   exec(successCallback, errorCallback, 'TeladocPlugin', 'changeColor', [colors]);
+exports.getConsultations = function (successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "getTeladocConsultations", []);
 };
 
+exports.setPrimaryColor = function (successCallback, errorCallback, color) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "setPrimaryColor", [color]);
+};
 
-module.exports = new Teladoc();
+exports.setSecondaryColor = function (successCallback, errorCallback, color) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "setSecondaryColor", [color]);
+};
+
+exports.setTertiaryColor = function (successCallback, errorCallback, color) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "setTertiaryColor", [color]);
+};
+
+exports.setStatusBarColor = function (successCallback, errorCallback, color) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "setStatusBarColor", [color]);
+};
+
+exports.changeColor = function (successCallback, errorCallback, colors) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "changeColor", [colors]);
+};
