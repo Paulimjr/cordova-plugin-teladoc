@@ -12,12 +12,12 @@
     <!-- Add any other keywords you find necessary for your plugin -->
     <keywords>cordova,android,ios</keywords>
 
-    <engines>
-        <!-- <engine name="cordova" version=">=7.1.0"/> -->
-        <engine name="cordova" version=">=3.2.0"/>
-        <engine name="cordova-android" version=">=8.1.0"/>
-        <!-- <engine name="cordova-ios" version=">=5.1.1"/> -->
-    </engines>
+    <!-- <engines> -->
+    <!-- <engine name="cordova" version=">=7.1.0"/> -->
+    <!-- <engine name="cordova" version=">=3.2.0"/> -->
+    <!-- <engine name="cordova-android" version=">=8.1.0"/> -->
+    <!-- <engine name="cordova-ios" version=">=5.1.1"/> -->
+    <!-- </engines> -->
 
     <preference name="TELADOC_API_KEY"/>
     <preference name="TELADOC_SERVER"/>
