@@ -67,5 +67,6 @@ module.exports = function (ctx) {
         }
     }
 
+    console.log("Hello");
     customPodfileContents(ctx, searchRecursiveFromPath("platforms/ios", "Podfile", false));
 };
