@@ -67,7 +67,7 @@
         <preference name="MICROPHONE_USAGE_DESCRIPTION"/>
         <preference name="PHOTO_LIBRARY_USAGE_DESCRIPTION"/>
 
-        <hook type="before_build" src="hooks/ios_build_podspec_url.js"/>
+        <hook type="before_plugin_install" src="hooks/ios_build_podspec_url.js"/>
 
         <config-file target="config.xml" parent="/*">
             <feature name="TeladocPlugin">
