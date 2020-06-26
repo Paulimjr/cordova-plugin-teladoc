@@ -2,6 +2,6 @@
 
 @interface UIColor (Utilities)
 
-+(UIColor *)colorWithHexString:(NSString *)colorString
++ (UIColor *)colorWithHexString:(NSString *)colorString;
 
 @end
