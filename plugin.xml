@@ -29,8 +29,6 @@
         <clobbers target="cordova.plugins.Teladoc" />
     </js-module>
 
-    <dependency id="cordova-plugin-cocoapod-supportx"/>
-
     <!-- Android -->
     <platform name="android">
 
@@ -69,7 +67,7 @@
         <preference name="MICROPHONE_USAGE_DESCRIPTION"/>
         <preference name="PHOTO_LIBRARY_USAGE_DESCRIPTION"/>
 
-        <hook type="before_prepare" src="hooks/ios_build_podspec_url.js"/>
+        <hook type="before_plugin_install" src="hooks/handle_Teladoc_framework.js"/>
 
         <config-file target="config.xml" parent="/*">
             <feature name="TeladocPlugin">
@@ -131,6 +129,8 @@
             <string>Light</string>
         </config-file>
 
+        <framework src="src/ios/libs/TeladocSDK/Teladoc.framework" custom="true" embed="true" target-dir="." />
+
         <source-file src="src/ios/AppDelegate+Teladoc.m"/>
         <header-file src="src/ios/AppDelegate+Teladoc.h"/>
         <source-file src="src/ios/PluginCore.m"/>
@@ -140,17 +140,6 @@
         <header-file src="src/ios/RSA.h"/>
         <source-file src="src/ios/UIColor+Utilities.m"/>
         <header-file src="src/ios/UIColor+Utilities.h"/>
-
-        <pod name="Teladoc" podspec="https://mobile-api-dev1.teladoc.com/sdk/34bfc256f112c4e46950157cf0bed8e5e24cae3e/podspec/latest.podspec" />
-
-<!--         <podspec>
-            <config>
-                <source url="https://github.com/CocoaPods/Specs.git"/>
-            </config>
-            <pods use-frameworks="true">
-                <pod name="Teladoc" options=":podspec => 'https://mobile-api-dev1.teladoc.com/sdk/34bfc256f112c4e46950157cf0bed8e5e24cae3e/podspec/latest.podspec'" />
-            </pods>
-        </podspec> -->
 
     </platform>
 </plugin>
