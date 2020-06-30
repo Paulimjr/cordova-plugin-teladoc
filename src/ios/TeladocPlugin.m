@@ -48,7 +48,7 @@
         if (self.loginToken == nil) {
             //NSError *error = [[NSError alloc] initWithDomain:@"cordova.plugins.Teladoc" code:1 userInfo:@{NSLocalizedDescriptionKey:@"Please login before using this function"}];
             //[self sendErrorResult:error.localizedDescription withCode:error.code callbackId:command.callbackId];
-            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CSVCommandStatus_ERROR messageAsString:@"Please login before using this function"] callbackId:command.callbackId];
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Please login before using this function"] callbackId:command.callbackId];
         } else {
             [[Teladoc apiService] callRoute:TDRouteDashboard withToken:self.loginToken andCompletion:^(BOOL completed, UIViewController *viewController, NSError *error) {
                 if (completed && viewController) {
