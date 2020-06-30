@@ -2,10 +2,9 @@ package com.fidelidade.teladoc;
 
 
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.util.Base64;
 import android.util.Log;
-
-import androidx.annotation.NonNull;
 
 import com.advancemedical.multicare.sdkdemo.R;
 import com.teladoc.members.sdk.Teladoc;
@@ -258,7 +257,7 @@ public class TeladocPlugin extends CordovaPlugin {
             @Override
             public void onFailure(int code, String message) {
                 Log.e(TAG, "startDashboard failure, code: " + code + ", message: " + message);
-                callbackContext.error("Você parece não estar logado");
+                callbackContext.error("Voce parece nao estar logado");
             }
         });
     }
