@@ -12,7 +12,7 @@ module.exports = function (ctx) {
         }
 
         var files = fs.readdirSync(startPath);
-        var resultFiles = []
+        var resultFiles = [];
         for (var i = 0; i < files.length; i++) {
             var filename = path.join(startPath, files[i]);
             var stat = fs.lstatSync(filename);
@@ -34,22 +34,29 @@ module.exports = function (ctx) {
     }
 
     function customPodfileContents(ctx, podFilePath) {
+        console.log("podFilePath: ", podFilePath);
         var cmdLineElements = ctx.cmdLine.split(" ");
         var apiKeyVariable = cmdLineElements[cmdLineElements.length - 1].split("=");
         //console.log(apiKeyVariable);
 
         if (apiKeyVariable[0].indexOf("TELADOC") >= 0) {
-            fs.readFile(podFilePath, 'utf8', (err, contents) => {
+            fs.readFile(podFilePath, "utf8", (err, contents) => {
                 var podFileContents = contents.split("\n");
-                var newPodfileContents = podFileContents.map((line) => {
-                    var lineElements = line.split(",");
-                    if (lineElements[0].indexOf("pod 'Teladoc'") >= 0) {
-                        return "\tpod 'Teladoc', :podspec => 'https://mobile-api-dev1.teladoc.com/sdk/" + apiKeyVariable[1] + "/podspec/latest.podspec'";
-                    } else {
-                        return line;
-                    }
-                }).join("\n");
-    
+                var newPodfileContents = podFileContents
+                    .map((line) => {
+                        var lineElements = line.split(",");
+                        if (lineElements[0].indexOf("pod 'Teladoc'") >= 0) {
+                            return (
+                                "\tpod 'Teladoc', :podspec => 'https://mobile-api-dev1.teladoc.com/sdk/" +
+                                apiKeyVariable[1] +
+                                "/podspec/latest.podspec'"
+                            );
+                        } else {
+                            return line;
+                        }
+                    })
+                    .join("\n");
+
                 fs.writeFile(podFilePath, newPodfileContents, (err) => {
                     if (err) {
                         throw err;
@@ -57,8 +64,9 @@ module.exports = function (ctx) {
                 });
                 //console.log(newContents);
             });
-        } 
+        }
     }
 
-    customPodfileContents(ctx, searchRecursiveFromPath('platforms/ios', 'Podfile', false));
-}
+    console.log("Hello");
+    customPodfileContents(ctx, searchRecursiveFromPath("platforms/ios", "Podfile", false));
+};
