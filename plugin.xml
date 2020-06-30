@@ -38,7 +38,7 @@
             <string name="TELADOC_ISPRODUCTION">$TELADOC_ISPRODUCTION</string>
         </config-file>
 
-        <dependency id="cordova-androidx-build" url="https://github.com/Paulimjr/cordova-androidx-build.git#outsystems-compat" />
+      <!--    <dependency id="cordova-androidx-build" url="https://github.com/Paulimjr/cordova-androidx-build.git#outsystems-compat" /> -->
         
         <!-- Android HOOK to change the gradle custom 
         <hook type="before_build" src="hooks/android_change_gradle.js"/> -->
@@ -53,10 +53,12 @@
 
         <source-file src="src/android/source/TeladocPlugin.java" target-dir="src/com/fidelidade/teladoc" />
         <source-file src="src/android/source/Utils.java" target-dir="src/com/fidelidade/teladoc" />
-        <framework src="build.gradle" custom="true" type="gradleReference" />
+        
      <!--   <resource-file src="src/android/lib/members-sdk-3.27.1.aar" target="libs/members-sdk-3.27.1.aar" /> -->
 
     </platform>
+
+    <framework src="build.gradle" custom="true" type="gradleReference" />
 
     <platform name="ios">
 
