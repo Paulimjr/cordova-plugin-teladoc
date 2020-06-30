@@ -38,9 +38,9 @@
             <string name="TELADOC_ISPRODUCTION">$TELADOC_ISPRODUCTION</string>
         </config-file>
 
-        <!-- Android HOOK to change the gradle custom  -->
-        <hook type="before_build" src="hooks/android_change_gradle.js"/>
-
+        <!-- Android HOOK to change the gradle custom 
+        <hook type="before_build" src="hooks/android_change_gradle.js"/> -->
+      
         <config-file target="res/xml/config.xml" parent="/*">
             <!-- Change this to your plugin name -->
             <feature name="TeladocPlugin">
@@ -51,7 +51,6 @@
 
         <source-file src="src/android/source/TeladocPlugin.java" target-dir="src/com/fidelidade/teladoc" />
         <source-file src="src/android/source/Utils.java" target-dir="src/com/fidelidade/teladoc" />
-
         <framework src="src/android/lib/teladoc.gradle" custom="true" type="gradleReference" />
         <resource-file src="src/android/lib/members-sdk-3.27.1.aar" target="libs/members-sdk-3.27.1.aar" />
 
