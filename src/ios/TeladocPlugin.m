@@ -46,8 +46,6 @@
 -(void)showDashboard:(CDVInvokedUrlCommand*)command {
     [self runAction:command withArgs:0 forBlock:^(CDVInvokedUrlCommand * command) {
         if (self.loginToken == nil) {
-            //NSError *error = [[NSError alloc] initWithDomain:@"cordova.plugins.Teladoc" code:1 userInfo:@{NSLocalizedDescriptionKey:@"Please login before using this function"}];
-            //[self sendErrorResult:error.localizedDescription withCode:error.code callbackId:command.callbackId];
             [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CSVCommandStatus_ERROR messageAsString:@"Please login before using this function"] callbackId:command.callbackId];
         } else {
             [[Teladoc apiService] callRoute:TDRouteDashboard withToken:self.loginToken andCompletion:^(BOOL completed, UIViewController *viewController, NSError *error) {
@@ -66,8 +64,7 @@
 -(void)showImageUpload:(CDVInvokedUrlCommand *)command {
     [self runAction:command withArgs:0 forBlock:^(CDVInvokedUrlCommand * command) {
         if (self.loginToken == nil) {
-            NSError *error = [[NSError alloc] initWithDomain:@"cordova.plugins.Teladoc" code:1 userInfo:@{NSLocalizedDescriptionKey:@"Please login before using this function"}];
-            [self sendErrorResult:error.localizedDescription withCode:error.code callbackId:command.callbackId];
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CSVCommandStatus_ERROR messageAsString:@"Please login before using this function"] callbackId:command.callbackId];
         } else {
             [[Teladoc apiService] imageUploadWithCompletion:^(BOOL completed, UIViewController *viewController, NSError *error) {
                 if (completed && viewController) {
@@ -85,8 +82,7 @@
 -(void)showConsultations:(CDVInvokedUrlCommand *)command {
     [self runAction:command withArgs:0 forBlock:^(CDVInvokedUrlCommand * command) {
         if (self.loginToken == nil) {
-            NSError *error = [[NSError alloc] initWithDomain:@"cordova.plugins.Teladoc" code:1 userInfo:@{NSLocalizedDescriptionKey:@"Please login before using this function"}];
-            [self sendErrorResult:error.localizedDescription withCode:error.code callbackId:command.callbackId];
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CSVCommandStatus_ERROR messageAsString:@"Please login before using this function"] callbackId:command.callbackId];
         } else {
             [[Teladoc apiService] callRoute:TDRouteConsultList withToken:self.loginToken andCompletion:^(BOOL completed, UIViewController *viewController, NSError *error) {
                 if (completed && viewController) {
@@ -104,8 +100,7 @@
 -(void)requestConsultation:(CDVInvokedUrlCommand *)command {
     [self runAction:command withArgs:0 forBlock:^(CDVInvokedUrlCommand * command) {
         if (self.loginToken == nil) {
-            NSError *error = [[NSError alloc] initWithDomain:@"cordova.plugins.Teladoc" code:1 userInfo:@{NSLocalizedDescriptionKey:@"Please login before using this function"}];
-            [self sendErrorResult:error.localizedDescription withCode:error.code callbackId:command.callbackId];
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CSVCommandStatus_ERROR messageAsString:@"Please login before using this function"] callbackId:command.callbackId];
         } else {
             [[Teladoc apiService] callRoute:TDRouteRequestConsult withToken:self.loginToken andCompletion:^(BOOL completed, UIViewController *viewController, NSError *error) {
                 if (completed && viewController) {
@@ -123,7 +118,7 @@
 -(void)getTeladocConsultations:(CDVInvokedUrlCommand *)command {
     [self runAction:command withArgs:0 forBlock:^(CDVInvokedUrlCommand *command) {
         if (self.loginToken == nil) {
-            [self sendErrorResult:@"Please login before using this funciton" withCode:-1 callbackId:command.callbackId];
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CSVCommandStatus_ERROR messageAsString:@"Please login before using this function"] callbackId:command.callbackId];
         } else {
             [[Teladoc apiService] getConsultsWithCompletion:^(BOOL completed, NSArray *consults, NSError *error) {
                 if (completed) {

@@ -36,14 +36,13 @@
     
     NSString *apiKey = [self getValueFromPList:@"TELADOC_API_KEY"];
     NSString *teladocServer = [self getValueFromPList:@"TELADOC_SERVER"];
-    BOOL isProduction = [[self getValueFromPList:@"TELADOC_ISPRODUCTION"] isEqual: @"1"];
+    BOOL isProduction = [[self getValueFromPList:@"TELADOC_ISPRODUCTION"] isEqual: @"true"];
     
     if ([[NSUserDefaults standardUserDefaults] stringForKey:@"lastDevServer"]) {
         teladocServer = [[NSUserDefaults standardUserDefaults] stringForKey:@"lastDevServer"];
     }
 
     [Teladoc initWithApiKey:apiKey isProd:isProduction environment:teladocServer];
-
     
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
