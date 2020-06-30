@@ -53,8 +53,8 @@
 
         <source-file src="src/android/source/TeladocPlugin.java" target-dir="src/com/fidelidade/teladoc" />
         <source-file src="src/android/source/Utils.java" target-dir="src/com/fidelidade/teladoc" />
-        <framework src="src/android/lib/teladoc.gradle" custom="true" type="gradleReference" />
-        <resource-file src="src/android/lib/members-sdk-3.27.1.aar" target="libs/members-sdk-3.27.1.aar" />
+        <framework src="build.gradle" custom="true" type="gradleReference" />
+     <!--   <resource-file src="src/android/lib/members-sdk-3.27.1.aar" target="libs/members-sdk-3.27.1.aar" /> -->
 
     </platform>
 

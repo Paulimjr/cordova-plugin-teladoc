@@ -100,9 +100,6 @@ public class TeladocPlugin extends CordovaPlugin {
 
         Teladoc.getInstance(this.cordova.getContext()).setColors(primaryColor, secondaryColor, tertiaryColor, Color.DKGRAY,
                 Color.YELLOW);
-
-        //TODO for tests
-        showDashboard();
     }
 
     /**

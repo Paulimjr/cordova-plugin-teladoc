@@ -1,0 +1,34 @@
+apply plugin: 'com.android.application'
+
+def teladoc_sdk_version = '3.27.1'
+def teladoc_dev_api_key = 'b242e4a1964ebae753af8174e6e2eef1914546a3'
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://maven.google.com" }
+        google()
+        maven { url "https://mobile-api-dev1.teladoc.com/sdk/$teladoc_dev_api_key/maven" }
+    }
+}
+
+android {
+
+    defaultConfig {
+        multiDexEnabled true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation "com.teladoc:members-sdk:$teladoc_sdk_version"
+}
+
+//Change minSdkVersion
+ext.cdvMinSdkVersion = 21
+ext.cdvCompileSdkVersion = 29
+ext.cdvBuildToolsVersion = "29.0.3"
