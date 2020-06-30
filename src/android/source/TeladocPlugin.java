@@ -2,7 +2,6 @@ package com.fidelidade.teladoc;
 
 
 import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.util.Base64;
 import android.util.Log;
 
@@ -133,7 +132,7 @@ public class TeladocPlugin extends CordovaPlugin {
 
         Teladoc.getInstance(this.cordova.getContext()).getConsults(new Teladoc.OnCompleteWithJSONArrayListener() {
             @Override
-            public void onSuccess(@NonNull JSONArray result) {
+            public void onSuccess(JSONArray result) {
                 Log.i(TAG, "getMessages success: " + result);
                 callbackContext.success(result);
             }
