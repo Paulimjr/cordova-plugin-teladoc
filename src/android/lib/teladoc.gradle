@@ -65,6 +65,13 @@ dependencies {
 //    implementation "com.github.bumptech.glide:glide:4.11.0"
 //    annotationProcessor "com.github.bumptech.glide:compiler:4.9.0"
 //    implementation "com.github.bumptech.glide:okhttp3-integration:4.0.0-RC1"
+
+    implementation 'joda-time:joda-time:2.10.6'
+    implementation "com.github.bumptech.glide:okhttp3-integration:4.0.0-RC1"
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    annotationProcessor "com.github.bumptech.glide:compiler:4.9.0"
+   
+
 }
 
 //Change minSdkVersion
