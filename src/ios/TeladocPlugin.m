@@ -133,6 +133,24 @@
     }];
 }
 
+-(void)showTeladocAccountSettings:(CDVInvokedUrlCommand *)command {
+    [self runAction:command withArgs:0 forBlock:^(CDVInvokedUrlCommand *command) {
+        if (self.loginToken == nil) {
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Please login before using this function"] callbackId:command.callbackId];
+        } else {
+            [[Teladoc apiService] accountSettingsWithCompletion:^(BOOL completed, UIViewController *viewController, NSError *error) {
+                if (completed && viewController) {
+                    [self.viewController presentViewController:viewController animated:YES completion:^{
+                        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"OK"] callbackId:command.callbackId];
+                    }];
+                } else {
+                    [self sendErrorResult:error.localizedDescription withCode:error.code callbackId:command.callbackId];
+                }
+            }];
+        }
+    }];
+}
+
 -(void)doTeladocLogout:(CDVInvokedUrlCommand *)command {
     [self runAction:command withArgs:0 forBlock:^(CDVInvokedUrlCommand *command) {
         [[Teladoc apiService] logout];
@@ -151,21 +169,43 @@
         NSDictionary *colors = command.arguments[0];
         
         if (colors[@"primary"]) {
-            [Teladoc apiService].primaryColor = [UIColor colorWithHexString:colors[@"primary"]];
+            if ([UIColor colorWithHexString:colors[@"primary"]] == nil) {
+                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid hex value for primary color"];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            } else {
+                [Teladoc apiService].primaryColor = [UIColor colorWithHexString:colors[@"primary"]];
+            }
         }
         
         if (colors[@"secondary"]) {
-            [Teladoc apiService].secondaryColor = [UIColor colorWithHexString:colors[@"secondary"]];
+            if ([UIColor colorWithHexString:colors[@"secondary"]] == nil) {
+                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid hex value for secondary color"];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            } else {
+                [Teladoc apiService].secondaryColor = [UIColor colorWithHexString:colors[@"secondary"]];
+            }
         }
         
         if (colors[@"tertiary"]) {
-            [Teladoc apiService].tertiaryColor = [UIColor colorWithHexString:colors[@"tertiary"]];
+            if ([UIColor colorWithHexString:colors[@"tertiary"]] == nil) {
+                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid hex value for tertiary color"];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            } else {
+                [Teladoc apiService].tertiaryColor = [UIColor colorWithHexString:colors[@"tertiary"]];
+            }
         }
         
         if (colors[@"statusBar"]) {
-            [Teladoc apiService].statusBarColor = [UIColor colorWithHexString:colors[@"statusBar"]];
+            if ([UIColor colorWithHexString:colors[@"statusBar"]] == nil) {
+                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid hex value for status bar color"];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            } else {
+                [Teladoc apiService].statusBarColor = [UIColor colorWithHexString:colors[@"statusBar"]];
+            }
         }
         
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Colors set successfully"];
+
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
 }
