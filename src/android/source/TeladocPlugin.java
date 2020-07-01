@@ -23,6 +23,8 @@ public class TeladocPlugin extends CordovaPlugin {
     private String loginToken = "";
     private String tokenApp = "";
     private Utils utils = new Utils();
+    private String errorMessageNotLogged = "Please login before using this function";
+    private String errorInvalidColor = "Invalid hex value for colors";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -90,7 +92,7 @@ public class TeladocPlugin extends CordovaPlugin {
         JSONObject objColors = args.getJSONObject(0);
 
         if (objColors == null) {
-            callbackContext.error("Invalid colors!");
+            callbackContext.error(errorInvalidColor);
             return;
         }
 
@@ -100,9 +102,6 @@ public class TeladocPlugin extends CordovaPlugin {
 
         Teladoc.getInstance(this.cordova.getContext()).setColors(primaryColor, secondaryColor, tertiaryColor, Color.DKGRAY,
                 Color.YELLOW);
-
-        //TODO for tests
-        showDashboard();
     }
 
     /**
@@ -119,7 +118,7 @@ public class TeladocPlugin extends CordovaPlugin {
             @Override
             public void onFailure(int code, String message) {
                 Log.e(TAG, "accountSettings failure, code: " + code + ", message: " + message);
-                callbackContext.error(message);
+                callbackContext.error(errorMessageNotLogged);
             }
         });
     }
@@ -140,6 +139,7 @@ public class TeladocPlugin extends CordovaPlugin {
             @Override
             public void onFailure(int code, String message) {
                 Log.e(TAG, "getConsults failure, code: " + code + ", message: " + message);
+                callbackContext.error(errorMessageNotLogged);
             }
         });
     }
@@ -157,7 +157,7 @@ public class TeladocPlugin extends CordovaPlugin {
             @Override
             public void onFailure(int code, String message) {
                 Log.e(TAG, "getConsults failure, code: " + code + ", message: " + message);
-                callbackContext.error(message);
+                callbackContext.error(errorMessageNotLogged);
             }
         });
     }
@@ -237,7 +237,7 @@ public class TeladocPlugin extends CordovaPlugin {
             @Override
             public void onFailure(int code, String message) {
                 Log.e(TAG, "imageUpload failure, code: " + code + ", message: " + message);
-                callbackContext.error(message);
+                callbackContext.error(errorMessageNotLogged);
             }
         });
     }
@@ -256,7 +256,7 @@ public class TeladocPlugin extends CordovaPlugin {
             @Override
             public void onFailure(int code, String message) {
                 Log.e(TAG, "startDashboard failure, code: " + code + ", message: " + message);
-                callbackContext.error("Voce parece nao estar logado");
+                callbackContext.error(errorMessageNotLogged);
             }
         });
     }
@@ -275,7 +275,7 @@ public class TeladocPlugin extends CordovaPlugin {
             @Override
             public void onFailure(int code, String message) {
                 Log.e(TAG, "requestConsult failure, code: " + code + ", message: " + message);
-                callbackContext.error(message);
+                callbackContext.error(errorMessageNotLogged);
             }
         });
     }
