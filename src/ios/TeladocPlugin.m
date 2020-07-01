@@ -166,6 +166,8 @@
             [Teladoc apiService].statusBarColor = [UIColor colorWithHexString:colors[@"statusBar"]];
         }
         
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:colors];
+
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
 }
