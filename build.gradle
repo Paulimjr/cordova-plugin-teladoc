@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 def teladoc_sdk_version = '3.27.1'
-def teladoc_dev_api_key = 'b242e4a1964ebae753af8174e6e2eef1914546a3'
+def teladoc_dev_api_key = 'f9b56887db7cf9f2d24faca76c0a776e09d1f822'
 
 allprojects {
     repositories {
