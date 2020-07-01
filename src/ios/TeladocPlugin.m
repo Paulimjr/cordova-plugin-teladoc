@@ -151,7 +151,7 @@
         NSDictionary *colors = command.arguments[0];
         
         if (colors[@"primary"]) {
-            if ([UIColor colowWithHexString:colors[@"primary"]] == nil) {
+            if ([UIColor colorWithHexString:colors[@"primary"]] == nil) {
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid hex value for primary color"];
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
             } else {
