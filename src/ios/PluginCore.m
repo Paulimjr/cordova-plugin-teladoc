@@ -2,7 +2,7 @@
 @implementation PluginCore : CDVPlugin
 -(void)runAction:(CDVInvokedUrlCommand*)command withArgs:(int)argCount forBlock:(void(^)(CDVInvokedUrlCommand * command))handler{
     @try{
-        if (argCount == -1 || [self validate:argCount arguments:command.arguments]) {
+        if (argCount == command.arguments.count) {
             handler(command);
         } else {
             [self sendErrorResult:@"INVALID ARGUMENTS"  withCode:-1 callbackId:command.callbackId];
