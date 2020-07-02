@@ -69,6 +69,9 @@ public class TeladocPlugin extends CordovaPlugin {
                 case CHANGE_COLORS:
                     changeColors(args);
                     break;
+                case IS_LOGGED_IN:
+                    isLoggedIn();
+                    break;
                 case INVALID:
                     callbackContext.error(Actions.INVALID.getDescription());
                     break;
@@ -169,6 +172,19 @@ public class TeladocPlugin extends CordovaPlugin {
      */
     private void logout() {
         Teladoc.getInstance(this.cordova.getActivity().getApplicationContext()).logout();
+    }
+    
+     /**
+     * Check if user is logged
+     */
+    private void isLoggedIn() {
+        boolean isLogged = Teladoc.getInstance(this.cordova.getContext()).isLoggedIn();
+
+        if (isLogged) {
+            callbackContext.success("true");
+        } else {
+            callbackContext.success("false");
+        }
     }
 
     /**
@@ -325,6 +341,7 @@ public class TeladocPlugin extends CordovaPlugin {
         REQ_CONSULTATION("requestConsultation", "The request consultation action."),
         ACCOUNT_SETTINGS("showTeladocAccountSettings", "The account settings action."),
         GET_CONSULTATIONS("getTeladocConsultations", "The retrieve consultations action."),
+        IS_LOGGED_IN("isLoggedIn", "The is logged in action."),
         CHANGE_COLORS("changeColor", "The set color application action."),
         INVALID("", "Invalid or not found action!");
 
