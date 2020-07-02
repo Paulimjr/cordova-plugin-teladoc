@@ -214,7 +214,7 @@
     [self runAction:command withArgs:0 forBlock:^(CDVInvokedUrlCommand *command) {
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:[[Teladoc apiService] isLoggedIn]];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    }
+    }];
 }
 
 @end;
