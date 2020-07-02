@@ -155,7 +155,7 @@
     [self runAction:command withArgs:0 forBlock:^(CDVInvokedUrlCommand *command) {
         [[Teladoc apiService] logout];
         if (![[Teladoc apiService] isLoggedIn]) {
-            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"NOT LOGGED IN"] callbackId:command.callbackId];
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Logged out"] callbackId:command.callbackId];
         } else {
             [self sendErrorResult:@"Unable to logout" withCode:-1 callbackId:command.callbackId];
         }
