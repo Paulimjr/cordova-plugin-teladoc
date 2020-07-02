@@ -94,14 +94,16 @@ public class TeladocPlugin extends CordovaPlugin {
         if (objColors == null) {
             callbackContext.error(errorInvalidColor);
             return;
+        } else {
+            int primaryColor = this.utils.convertStringToColor(objColors.getString("primaryColor"));
+            int secondaryColor = this.utils.convertStringToColor(objColors.getString("secondaryColor"));
+            int tertiaryColor = this.utils.convertStringToColor(objColors.getString("tertiaryColor"));
+
+            Teladoc.getInstance(this.cordova.getContext()).setColors(primaryColor, secondaryColor, tertiaryColor, Color.DKGRAY,
+                    Color.YELLOW);
+
+            callbackContext.success("OK");
         }
-
-        int primaryColor = this.utils.convertStringToColor(objColors.getString("primaryColor"));
-        int secondaryColor = this.utils.convertStringToColor(objColors.getString("secondaryColor"));
-        int tertiaryColor = this.utils.convertStringToColor(objColors.getString("tertiaryColor"));
-
-        Teladoc.getInstance(this.cordova.getContext()).setColors(primaryColor, secondaryColor, tertiaryColor, Color.DKGRAY,
-                Color.YELLOW);
     }
 
     /**
