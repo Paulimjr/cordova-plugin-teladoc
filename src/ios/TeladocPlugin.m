@@ -168,39 +168,39 @@
         
         NSDictionary *colors = command.arguments[0];
         
-        if (colors[@"primary"]) {
-            if ([UIColor colorWithHexString:colors[@"primary"]] == nil) {
+        if (colors[@"primaryColor"]) {
+            if ([UIColor colorWithHexString:colors[@"primaryColor"]] == nil) {
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid hex value for primary color"];
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
             } else {
-                [Teladoc apiService].primaryColor = [UIColor colorWithHexString:colors[@"primary"]];
+                [Teladoc apiService].primaryColor = [UIColor colorWithHexString:colors[@"primaryColor"]];
             }
         }
         
-        if (colors[@"secondary"]) {
-            if ([UIColor colorWithHexString:colors[@"secondary"]] == nil) {
+        if (colors[@"secondaryColor"]) {
+            if ([UIColor colorWithHexString:colors[@"secondaryColor"]] == nil) {
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid hex value for secondary color"];
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
             } else {
-                [Teladoc apiService].secondaryColor = [UIColor colorWithHexString:colors[@"secondary"]];
+                [Teladoc apiService].secondaryColor = [UIColor colorWithHexString:colors[@"secondaryColor"]];
             }
         }
         
-        if (colors[@"tertiary"]) {
-            if ([UIColor colorWithHexString:colors[@"tertiary"]] == nil) {
+        if (colors[@"tertiaryColor"]) {
+            if ([UIColor colorWithHexString:colors[@"tertiaryColor"]] == nil) {
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid hex value for tertiary color"];
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
             } else {
-                [Teladoc apiService].tertiaryColor = [UIColor colorWithHexString:colors[@"tertiary"]];
+                [Teladoc apiService].tertiaryColor = [UIColor colorWithHexString:colors[@"tertiaryColor"]];
             }
         }
         
-        if (colors[@"statusBar"]) {
-            if ([UIColor colorWithHexString:colors[@"statusBar"]] == nil) {
+        if (colors[@"statusBarColor"]) {
+            if ([UIColor colorWithHexString:colors[@"statusBarColor"]] == nil) {
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid hex value for status bar color"];
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
             } else {
-                [Teladoc apiService].statusBarColor = [UIColor colorWithHexString:colors[@"statusBar"]];
+                [Teladoc apiService].statusBarColor = [UIColor colorWithHexString:colors[@"statusBarColor"]];
             }
         }
         
@@ -212,7 +212,7 @@
 
 -(void)isLoggedIn:(CDVInvokedUrlCommand *)command {
     [self runAction:command withArgs:0 forBlock:^(CDVInvokedUrlCommand *command) {
-        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:[[Teladoc apiService] isLoggedIn]];
+        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:[[Teladoc apiService] isLoggedIn] && self.loginToken != nil];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
 }
