@@ -37,3 +37,7 @@ exports.getConsultations = function (successCallback, errorCallback) {
 exports.changeColor = function (successCallback, errorCallback, colors) {
     exec(successCallback, errorCallback, "TeladocPlugin", "changeColor", [colors]);
 };
+
+exports.isLoggedIn = function (successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "TeladocPlugin", "isLoggedIn", []);
+}
