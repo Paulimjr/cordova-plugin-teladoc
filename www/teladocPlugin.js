@@ -30,10 +30,6 @@ exports.teladocLogout = function (successCallback, errorCallback) {
     exec(successCallback, errorCallback, "TeladocPlugin", "doTeladocLogout", []);
 };
 
-exports.teladocIsLoggedIn = function (successCallback, errorCallback) {
-    exec(successCallback, errorCallback, "TeladocPlugin", "isLoggedIn", []);
-};
-
 exports.getConsultations = function (successCallback, errorCallback) {
     exec(successCallback, errorCallback, "TeladocPlugin", "getTeladocConsultations", []);
 };
