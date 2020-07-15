@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.util.Base64;
 import android.util.Log;
 
-import com.advancemedical.multicare.sdkdemo.R;
 import com.teladoc.members.sdk.Teladoc;
 
 import org.apache.cordova.CallbackContext;
@@ -367,13 +366,13 @@ public class TeladocPlugin extends CordovaPlugin {
         }
     }
 
-    /**
+     /**
      * Set the SDK teladoc api key (DEV or PRODUCTION)
      */
     private void setApiKey() {
-        String isProduction = this.cordova.getContext().getString(R.string.TELADOC_ISPRODUCTION);
-        String apiKey = this.cordova.getContext().getString(R.string.TELADOC_API_KEY);
-        String environment = this.cordova.getActivity().getString(R.string.TELADOC_SERVER);
+        String isProduction = getStringResourceByName("TELADOC_ISPRODUCTION");
+        String apiKey = getStringResourceByName("TELADOC_API_KEY");
+        String environment = getStringResourceByName("TELADOC_SERVER");
 
         if (isProduction.equalsIgnoreCase("false")) {
             Teladoc.getInstance(this.cordova.getActivity().getApplicationContext()).setTestApiKey(apiKey, environment);
@@ -383,5 +382,22 @@ public class TeladocPlugin extends CordovaPlugin {
 
         Teladoc.getInstance(this.cordova.getActivity().getApplicationContext()).setOnErrorEventListener((errorString, isLoggedIn) -> Log.w(TAG, "onError, errorString: " + errorString));
         Teladoc.getInstance(this.cordova.getActivity().getApplicationContext()).setOnTrackingEventListener(event -> Log.i(TAG, "tracking event: " + event));
+    }
+
+    /**
+     * get string by identifier
+     *
+     * @param aString the string name
+     * @return the string value
+     */
+    private String getStringResourceByName(String aString) {
+        String packageName = this.cordova.getActivity().getPackageName();
+        int resId = this.cordova.getActivity().getResources()
+                .getIdentifier(aString, "string", packageName);
+        if (resId == 0) {
+            return aString;
+        } else {
+            return this.cordova.getActivity().getResources().getString(resId);
+        }
     }
 }
