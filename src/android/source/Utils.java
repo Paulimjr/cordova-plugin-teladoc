@@ -5,8 +5,6 @@ import android.graphics.Color;
 import android.util.Base64;
 import android.util.Log;
 
-import com.advancemedical.multicare.sdkdemo.R;
-
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
